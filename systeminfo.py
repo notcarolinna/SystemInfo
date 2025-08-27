@@ -136,7 +136,6 @@ def get_network_adapters():
 class StatusHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path != "/status":
-            # equivalente ao http_error no C
             self.send_response(404)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
@@ -156,7 +155,6 @@ class StatusHandler(BaseHTTPRequestHandler):
         }
 
         data = json.dumps(response, indent=2).encode()
-        # equivalente ao http_ok no C
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
         self.send_header("Content-Length", str(len(data)))
